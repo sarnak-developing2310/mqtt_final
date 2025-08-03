@@ -1,0 +1,21 @@
+# Requirements for COSMOS MQTT Controller App
+
+# Core Kivy framework for Android app development
+kivy==2.2.0
+kivymd==1.1.1
+
+# MQTT client library
+paho-mqtt==1.6.1
+
+# Android-specific dependencies
+python-for-android==2023.6.21
+buildozer==1.5.0
+
+# Additional dependencies
+requests==2.31.0
+certifi==2023.7.22
+
+# Development and building tools
+cython==0.29.36
+setuptools==68.2.2
+wheel==0.41.2
