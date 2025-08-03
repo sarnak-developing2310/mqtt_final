@@ -61,8 +61,20 @@ class MQTTController:
             self.username = username
             self.password = password
             
-            self.client = mqtt.Client()
-            self.client.username_pw_set(username, password)
+            # Create MQTT client with version compatibility
+            try:
+                # Try new method (paho-mqtt 2.0+)
+                self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
+                Logger.info("MQTT: Using CallbackAPIVersion.VERSION1")
+            except (AttributeError, TypeError):
+                # Fallback to old method (paho-mqtt 1.x)
+                self.client = mqtt.Client()
+                Logger.info("MQTT: Using legacy client creation")
+            
+            # Set credentials if provided
+            if username and password:
+                self.client.username_pw_set(username, password)
+                
             self.client.on_connect = self.on_connect
             self.client.on_disconnect = self.on_disconnect
             self.client.on_message = self.on_message

@@ -16,7 +16,7 @@ if %errorlevel% neq 0 (
 
 REM Check if pip is available
 echo Checking pip installation...
-pip --version
+python -m pip --version
 if %errorlevel% neq 0 (
     echo Error: pip is not installed or not in PATH
     pause
@@ -25,19 +25,19 @@ if %errorlevel% neq 0 (
 
 REM Install buildozer if not present
 echo Installing/Upgrading Buildozer...
-pip install --upgrade buildozer
+python -m pip install --upgrade buildozer
 
 REM Install requirements
 echo Installing Python requirements...
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 REM Clean previous builds (optional)
 echo Cleaning previous builds...
-buildozer android clean
+python -m buildozer android clean
 
 REM Build the APK
 echo Building APK (this may take a while on first run)...
-buildozer android debug
+python -m buildozer android debug
 
 REM Check if build was successful
 if %errorlevel% equ 0 (
