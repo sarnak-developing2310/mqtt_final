@@ -1,0 +1,8 @@
+# COSMOS MQTT Controller - Pydroid 3 Requirements
+# Install these packages in Pydroid 3: Pip -> Install
+
+# MQTT client library
+paho-mqtt==1.6.1
+
+# Note: tkinter is included with Python on most systems
+# If tkinter is not available on your system, you can use the Kivy version (main.py)
